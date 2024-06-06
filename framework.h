@@ -43,26 +43,26 @@
                                     printf("Succeeded tests: %u\n", total.totalTests - total.testsFailed);  \
                                     printf("Failed tests: %u\n", total.testsFailed)
 
-#define TEST_FUNCTION(func, ...)    static bool func {                                                                \
-                                        printf("####### Starting %s #######\n", __func__);                                   \
+#define TEST_FUNCTION(func, ...)    static bool func {                                                                  \
+                                        printf("####### Starting %s #######\n", __func__);                              \
                                         bool test = true;                                                               \
                                         unsigned int assertAmount = 0;                                                  \
                                         unsigned int assertOk = 0;                                                      \
-                                        __VA_ARGS__                                                                     \
-                                        printf("[Test %s] %u/%u asserts passed\n", __func__, assertOk, assertAmount);        \
+                                        {__VA_ARGS__}                                                                   \
+                                        printf("[Test %s] %u/%u asserts passed\n", __func__, assertOk, assertAmount);   \
                                         return test;                                                                    \
                                     }
 
-#define DEFINE_FAMILY(func, ...)    TEST_results_t func{ \
-                                        TEST_results_t ret = {0,0};             \
-                                        __VA_ARGS__                                \
-                                        return ret;                     \
+#define DEFINE_FAMILY(func, ...)    TEST_results_t func{            \
+                                        TEST_results_t ret = {0,0}; \
+                                        __VA_ARGS__                 \
+                                        return ret;                 \
                                     }
 
 #define DECLARE_FAMILY(func)        TEST_results_t func
 
-#define TEST_FAMILY(func)           ret = func;         \
-                                    total.totalTests = ret.totalTests + total.totalTests; \
+#define TEST_FAMILY(func)           ret = func;                                             \
+                                    total.totalTests = ret.totalTests + total.totalTests;   \
                                     total.testsFailed = ret.testsFailed + total.testsFailed \
 
 typedef struct TEST_results {
