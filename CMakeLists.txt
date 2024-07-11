@@ -10,14 +10,14 @@ set(-Wno-dev)
 # initialize the SDK directly
 include(pico_sdk_import.cmake)
 
-project(beispiel CXX C ASM)
+project(example CXX C ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
 # Initialize the SDK
 pico_sdk_init()
 
-add_executable(main beispiel.c)
+add_executable(main example.c)
 
 # Add pico_stdlib library which aggregates commonly used features
 target_link_libraries(main pico_stdlib hardware_uart)
