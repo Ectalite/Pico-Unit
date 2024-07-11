@@ -1,9 +1,5 @@
-//
-// Created by i40015712 on 24.04.2024.
-//
-
-#ifndef STRESSTESTING_FRAMEWORK_H
-#define STRESSTESTING_FRAMEWORK_H
+#ifndef PICO_UNIT_H
+#define PICO_UNIT_H
 
 #include <stdio.h>
 #include <stdint.h>
@@ -70,4 +66,4 @@ typedef struct TEST_results {
     uint16_t testsFailed;
 } TEST_results_t;
 
-#endif //STRESSTESTING_FRAMEWORK_H
+#endif //PICO_UNIT_H
